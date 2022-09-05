@@ -9,6 +9,13 @@
             "Modules\\": "../../../Modules/"
         }
     },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Queents\\Vilt\\ViltServiceProvider"
+            ]
+        }
+    },
     "authors": [
         {
             "name": "Fady Mondy",

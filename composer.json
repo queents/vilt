@@ -1,0 +1,27 @@
+{
+    "name": "queents/vilt",
+    "description": "VILT stack HMVC dashboard and resource generator with ready to use modules",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Queents\\Vilt\\": "src/",
+            "Modules\\": "../../../Modules/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Fady Mondy",
+            "email": "info@3x1.io"
+        }
+    ],
+    "minimum-stability": "beta",
+    "require": {
+        "nwidart/laravel-modules": "^9.0",
+        "spatie/laravel-translatable": "^6.0",
+        "spatie/laravel-translation-loader": "^2.7",
+        "queents/base-module": "^1.0",
+        "queents/roles-module": "^1.0",
+        "queents/generator-module": "^1.0"
+    }
+}

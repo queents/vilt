@@ -6,54 +6,15 @@ It's highly recommended to avoid using `VSCode` Or `PHPStorm`, instead, use `Ato
 ## Overview
 
 <b>Vilt Admin</b> is build to make it easy to development web apps and API by generate files of CRUD operations and support helpers of tones of functions to make it easy to manage and use framework services.
-> Use one of our perfect helpers <a href="https://github.com/spatie/laravel-sitemap" target="_blank">`Spatie Laravel Settings`</a>
-
-## Back-End Tech Space
-
-1. <b><a href="https://laravel.com/" target="_blank">Laravel</a></b>
-
-## Front-End Tech Space
-
-please review these packages before starting development.
-
-1. <b><a href="https://vuejs.org/" target="_blank">VueJs</a></b>
-1. <b><a href="https://inertiajs.com/" target="_blank">Inertiajs</a></b>
-2. <b><a href="https://yarnpkg.com/" target="_blank">Yarn</a></b>
-2. <b><a href="https://vitejs.dev/" target="_blank">Vite</a></b>
-3. <b><a href="https://tailwindcss.com/" target="_blank">Tailwind</a></b>
-4. <b><a href="https://nuxtjs.org/" target="_blank">NuxtJs</a></b>
 
 ## Features
 
-- [x] CURD VueJS Generator
-- [x] Settings Helpers & Generator
-- [x] Sitemap Generator
-- [x] Responsive UI
+- [x] CURD Generator Web / API
+- [x] HMVC Architecture
+- [x] Authentication & User Manager 
+- [x] Responsive UI Using Admin One Template
 - [x] Support RTL Multi Languages
-- [x] SEO Support
-- [x] Artisan Commands GUI Tool
-- [x] File Browser GUI Tool
-- [x] Authentication & User ACL
-
-## Credits
-
-Vilt Admin use internally some open-source third-party libraries/packages, many thanks to the web community, it will be very good if you are review it before start using our framework:
-1. <b><a href="https://laravel.com/" target="_blank">Laravel</a></b> <small>Main Framework</small>
-2. <b><a href="https://inertiajs.com/" target="_blank">InertiaJS</a></b> <small>VueJs Framework</small>
-3. <b><a href="https://tailwindcss.com/" target="_blank">TailwindCSS</a></b> <small>Style Kit</small>
-4. <b><a href="https://vuejs.org/" target="_blank">VueJs</a></b> <small>Javascript framework</small>
-5. <b><a href="https://filamentphp.com/" target="_blank">Filament</a></b> <small>It's a very creative admin panel for TALL stack</small>
-6. <b><a href="https://www.infyom.com/open-source" target="_blank">Infyom</a></b> <small>APIs Scaffolding</small>
-7. <b><a href="https://laravel.com/docs/8.x/sanctum" target="_blank">Laravel Sanctum</a></b> <small>APIs Token Auth</small>
-8.  <b><a href="https://spatie.be/docs/laravel-permission/v4/introduction" target="_blank">Laravel Permission</a></b> <small>User ACL</small>
-9.  <b><a href="https://nwidart.com/laravel-modules/v6/introduction" target="_blank">Laravel Module</a></b> <small>MVC Modular Arch</small>
-10.  <b><a href="https://laravel-excel.com/" target="_blank">Laravel Excel</a></b> <small>Import & Export Excel</small>
-11.  <b><a href="https://github.com/spatie/laravel-sitemap" target="_blank">Laravel Sitemap</a></b> <small>Sitemap Generator</small>
-12. <b><a href="https://github.com/spatie/laravel-translatable" target="_blank">Laravel Translatable</a></b> <small>Translation UI</small>
-13. <b><a href="https://github.com/spatie/laravel-medialibrary" target="_blank">Laravel Media Library</a></b> <small>Media & Upload</small>
-14. <b><a href="https://github.com/spatie/laravel-backup" target="_blank">Laravel Backup</a></b> <small>Backup</small>
-15. <b><a href="https://larecipe.binarytorch.com.my/" target="_blank">LaRecipe</a></b> <small>Documentations UI</small>
-
+- [x] Resource System For GUI / API
 
 ## Install
 
@@ -105,6 +66,25 @@ look to the new docs of v1.0.0 [Docs](https://github.com/queents/vilt/wiki)
 ## Changelog
 
 Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
+
+## Credits
+
+Vilt Admin use internally some open-source third-party libraries/packages, many thanks to the web community, it will be very good if you are review it before start using our framework:
+1. <b><a href="https://laravel.com/" target="_blank">Laravel</a></b> <small>Main Framework</small>
+2. <b><a href="https://inertiajs.com/" target="_blank">InertiaJS</a></b> <small>VueJs Framework</small>
+3. <b><a href="https://tailwindcss.com/" target="_blank">TailwindCSS</a></b> <small>Style Kit</small>
+4. <b><a href="https://vuejs.org/" target="_blank">VueJs</a></b> <small>Javascript framework</small>
+5. <b><a href="https://filamentphp.com/" target="_blank">Filament</a></b> <small>It's a very creative admin panel for TALL stack</small>
+6. <b><a href="https://www.infyom.com/open-source" target="_blank">Infyom</a></b> <small>APIs Scaffolding</small>
+7. <b><a href="https://laravel.com/docs/8.x/sanctum" target="_blank">Laravel Sanctum</a></b> <small>APIs Token Auth</small>
+8.  <b><a href="https://spatie.be/docs/laravel-permission/v4/introduction" target="_blank">Laravel Permission</a></b> <small>User ACL</small>
+9.  <b><a href="https://nwidart.com/laravel-modules/v6/introduction" target="_blank">Laravel Module</a></b> <small>MVC Modular Arch</small>
+10.  <b><a href="https://laravel-excel.com/" target="_blank">Laravel Excel</a></b> <small>Import & Export Excel</small>
+11.  <b><a href="https://github.com/spatie/laravel-sitemap" target="_blank">Laravel Sitemap</a></b> <small>Sitemap Generator</small>
+12. <b><a href="https://github.com/spatie/laravel-translatable" target="_blank">Laravel Translatable</a></b> <small>Translation UI</small>
+13. <b><a href="https://github.com/spatie/laravel-medialibrary" target="_blank">Laravel Media Library</a></b> <small>Media & Upload</small>
+14. <b><a href="https://github.com/spatie/laravel-backup" target="_blank">Laravel Backup</a></b> <small>Backup</small>
+15. <b><a href="https://larecipe.binarytorch.com.my/" target="_blank">LaRecipe</a></b> <small>Documentations UI</small>
 
 ## Contributors
 

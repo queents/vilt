@@ -106,9 +106,8 @@ look to the new docs of v1.0.0 [Docs](https://github.com/queents/vilt/wiki)
 
 Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
 
-## Credits
+## Contributors
 
-- [Queen Tech Solutions](https://github.com/queents)
 - [Fady Mondy](https://github.com/3x1io)
 - [Mohamed Ibrahem](https://github.com/marious)
 - [Khaled Abodaif](https://github.com/khaledAbodaif)

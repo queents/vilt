@@ -84,14 +84,6 @@ Generate Username and Password for Dashboard
 php artisan roles:install
 ```
 
-## Support
-
-you can join our discord server to get support [VILT Discord](https://discord.gg/HUNYbgKDdx)
-
-## Docs
-
-look to the new docs of v1.0.0 [Docs](https://github.com/queents/vilt/wiki)
-
 ## Plugins
 
 1. <b><a href="https://github.com/queents/settings-module" target="_blank">Settings Module</a></b> <small>GUI to save key and value on database and cache it</small>
@@ -101,6 +93,14 @@ look to the new docs of v1.0.0 [Docs](https://github.com/queents/vilt/wiki)
 5. <b><a href="https://github.com/queents/browser-module" target="_blank">Browser Module</a></b> <small>browse the file inside your app</small>
 6. <b><a href="https://github.com/queents/menus-module" target="_blank">Menu Module</a></b> <small>Menu manager and generator for Database</small>
 7. <b><a href="https://github.com/queents/notifications-module" target="_blank">Notifications Module</a></b> <small>multi channels and vendors like FCM / Pusher</small>
+
+## Support
+
+you can join our discord server to get support [VILT Discord](https://discord.gg/HUNYbgKDdx)
+
+## Docs
+
+look to the new docs of v1.0.0 [Docs](https://github.com/queents/vilt/wiki)
 
 ## Changelog
 

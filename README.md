@@ -5,7 +5,7 @@ It's highly recommended to avoid using `VSCode` Or `PHPStorm`, instead, use `Ato
 
 ## Overview
 
-<b>Vilt Admin</b> is build to make it easy to development web apps and API by generate files of CRUD operations and support helpers of tones of functions to make it easy to manage and use framework services.
+<b>Vilt</b> is build to make it easy to development web apps and API by generate files of CRUD operations and support helpers of tones of functions to make it easy to manage and use framework services.
 
 ## Features
 
@@ -14,7 +14,14 @@ It's highly recommended to avoid using `VSCode` Or `PHPStorm`, instead, use `Ato
 - [x] Authentication & User Manager 
 - [x] Responsive UI Using Admin One Template
 - [x] Support RTL Multi Languages
-- [x] Resource System For GUI / API
+- [x] Table Builder
+- [x] Form Builder
+- [x] Resource Builder
+- [x] Page Builder
+- [x] Actions Builder
+- [x] Modals Builder
+- [x] Widgets Builder
+- [x] Menu Builder
 
 ## Install
 

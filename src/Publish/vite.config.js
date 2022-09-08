@@ -32,15 +32,18 @@ export default ({ mode }) => {
             },
         };
     }
+
     return defineConfig({
         resolve:{
             alias:{
-                '$$' : resolve(__dirname, './Modules/Base/Services/Rows/Render/'),
-                '@@' : resolve(__dirname, './Modules/Base/Services/Resource/Render/'),
+                '$$' : resolve(__dirname, './Modules/Base/Services/Rows/Render'),
+                '@@' : resolve(__dirname, './Modules/'+process.env.THEME_MODULE+'/Resources/views'),
             },
         },
         plugins: [
-            laravel(["resources/js/app.js", "resources/css/main.css"]),
+            laravel([
+                "resources/js/app.js"
+            ]),
             vue({
                 template: {
                     transformAssetUrls: {

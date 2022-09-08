@@ -6,13 +6,12 @@
 
     <title inertia>{{ config('app.name', 'Laravel') }}</title>
 
-
     <!-- Scripts -->
-    @routes
-    @vite(['resources/css/main.css', 'resources/js/app.js'])
     @inertiaHead
 </head>
 <body class="font-sans antialiased">
+@routes
 @inertia
+@vite(['resources/js/app.js'])
 </body>
 </html>

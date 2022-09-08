@@ -9,12 +9,11 @@ module.exports = {
         "./resources/js/**/*.vue",
         "./Modules/**/Resources/views/**/*.vue",
         "./Modules/**/Services/Rows/Render/**/*.vue",
-        "./Modules/**/Services/Resource/Render/**/*.vue",
+        "./Modules/**/Services/Rows/Render/**/**/*.vue",
         './resources/js/**/*.js',
     ],
     darkMode: "class", // or 'media' or 'class'
     theme: {
-
         asideScrollbars: {
             light: "light",
             gray: "gray",

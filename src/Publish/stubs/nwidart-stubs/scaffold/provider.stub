@@ -31,7 +31,6 @@ class $CLASS$ extends ServiceProvider
         $this->registerViews();
         $this->loadMigrationsFrom(module_path($this->moduleName, '$MIGRATIONS_PATH$'));
         VILT::loadResources($this->moduleName);
-        VILT::loadPages($this->moduleName);
         VILT::registerTranslation(Lang::make('$LOWER_NAME$.sidebar')->label(__('$MODULE$')));
     }
 

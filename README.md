@@ -53,6 +53,12 @@ OR
 yarn & yarn build
 ```
 
+Run Migration
+
+```bash
+php artisan migrate
+```
+
 Generate Username and Password for Dashboard
 
 ```bash

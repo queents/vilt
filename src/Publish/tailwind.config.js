@@ -10,6 +10,7 @@ module.exports = {
         "./Modules/**/Resources/views/**/*.vue",
         "./Modules/**/Services/Rows/Render/**/*.vue",
         "./Modules/**/Services/Rows/Render/**/**/*.vue",
+        "./Modules/**/Resources/views/**/*.js",
         './resources/js/**/*.js',
     ],
     darkMode: "class", // or 'media' or 'class'
@@ -60,6 +61,7 @@ module.exports = {
     },
     plugins: [
         require("@tailwindcss/forms"),
+        require("@tailwindcss/typography"),
         plugin(function ({ matchUtilities, theme }) {
             matchUtilities(
                 {
@@ -92,5 +94,9 @@ module.exports = {
         }),
         require("@tailwindcss/line-clamp"),
         require("tailwindcss-rtl"),
+        require("daisyui"),
     ],
+    daisyui: {
+        themes: false,
+    },
 };

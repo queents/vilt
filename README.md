@@ -34,6 +34,13 @@ Now Install VILT
 php artisan vilt:install
 ```
 
+Open .env and add this
+
+
+```env
+THEME_MODULE=UI
+```
+
 run NPM or YARN to install and build assets
 
 ```bash

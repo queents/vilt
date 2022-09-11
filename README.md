@@ -1,11 +1,8 @@
-# VILT Framework
-
-we build the admin panel to support VILT Stack Community please before you use this admin panel generator review the stack
-It's highly recommended to avoid using `VSCode` Or `PHPStorm`, instead, use `Atom` text-editor for a better development environment.
+This package is used to generate an admin panel for you with a CRUD generator using VILT stack and Admin One Theme.
 
 ## Overview
 
-<b>Vilt</b> is build to make it easy to development web apps and API by generate files of CRUD operations and support helpers of tones of functions to make it easy to manage and use framework services.
+<b>Vilt</b> is built to make it easy to develop web apps and API by generating files of CRUD operations and support helpers of tonnes of functions to make it easy to manage and use framework services.
 
 ## Features
 
@@ -23,65 +20,34 @@ It's highly recommended to avoid using `VSCode` Or `PHPStorm`, instead, use `Ato
 - [x] Widgets Builder
 - [x] Menu Builder
 
-## Install
+## Docs
 
-```bash
-composer require queents/vilt
-```
-Now Install VILT
+- [Environment Setup](https://github.com/queents/vilt/wiki/Environment-Setup)
+- [Install](https://github.com/queents/vilt/wiki/Install)
+- [Generate Resource](https://github.com/queents/vilt/wiki/Generate-Resource)
+- [Generate Action](https://github.com/queents/vilt/wiki/Generate-Actions)
+- [Generate Modal](https://github.com/queents/vilt/wiki/Generate-Modal)
+- [Generate Widget](https://github.com/queents/vilt/wiki/Generate-Widget)
+- [Generate Route](https://github.com/queents/vilt/wiki/Generate-Route)
+- [Menu Manager](https://github.com/queents/vilt/wiki/Menu-Manager)
+- [Translation Manager](https://github.com/queents/vilt/wiki/Translation-Manager)
+- [Data Manager](https://github.com/queents/vilt/wiki/Data-Manager)
+- [Form Builder](https://github.com/queents/vilt/wiki/Form-Builder)
+- [Table Builder](https://github.com/queents/vilt/wiki/Table-Builder)
+- [Page Builder](https://github.com/queents/vilt/wiki/Page-Builder)
+- [Fire Alert](https://github.com/queents/vilt/wiki/Fire-Alert)
+- [Custom View](https://github.com/queents/vilt/wiki/Custom-View)
+- [Plugins](https://github.com/queents/vilt/wiki/Plugins)
+- [Build Plugins](https://github.com/queents/vilt/wiki/Build-Plugins)
+- [Get Started](https://github.com/queents/vilt/wiki/Get-Started)
+- [Awesome Resources for Tailwind](https://github.com/queents/vilt/wiki/Awesome-Resources-for-Tailwind)
 
-```bash
-php artisan vilt:install
-```
 
-Open .env and add this
-
-
-```env
-THEME_MODULE=UI
-```
-
-run NPM or YARN to install and build assets
-
-```bash
-npm i & npm run build
-```
-
-OR
-
-```bash
-yarn & yarn build
-```
-
-Run Migration
-
-```bash
-php artisan migrate
-```
-
-Generate Username and Password for Dashboard
-
-```bash
-php artisan roles:install
-```
-
-## Plugins
-
-1. <b><a href="https://github.com/queents/settings-module" target="_blank">Settings Module</a></b> <small>GUI to save key and value on database and cache it</small>
-2. <b><a href="https://github.com/queents/translations-module" target="_blank">Translations Module</a></b> <small>Database Base Translations Keys with Google Translations API Integration</small>
-3. <b><a href="https://github.com/queents/auth-module" target="_blank">Auth Module</a></b> <small>convert any Model to Auth Model with full API</small>
-4. <b><a href="https://github.com/queents/artisan-module" target="_blank">Artisan Module</a></b> <small>run artisan commands using GUI</small>
-5. <b><a href="https://github.com/queents/browser-module" target="_blank">Browser Module</a></b> <small>browse the file inside your app</small>
-6. <b><a href="https://github.com/queents/menus-module" target="_blank">Menu Module</a></b> <small>Menu manager and generator for Database</small>
-7. <b><a href="https://github.com/queents/notifications-module" target="_blank">Notifications Module</a></b> <small>multi channels and vendors like FCM / Pusher</small>
 
 ## Support
 
 you can join our discord server to get support [VILT Discord](https://discord.gg/HUNYbgKDdx)
 
-## Docs
-
-look to the new docs of v1.0.0 [Docs](https://github.com/queents/vilt/wiki)
 
 ## Changelog
 
@@ -90,21 +56,20 @@ Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed re
 ## Credits
 
 Vilt Admin use internally some open-source third-party libraries/packages, many thanks to the web community, it will be very good if you are review it before start using our framework:
-1. <b><a href="https://laravel.com/" target="_blank">Laravel</a></b> <small>Main Framework</small>
+
+1. <b><a href="https://laravel.com/" target="_blank"></a></b> <small>Main Framework</small>
 2. <b><a href="https://inertiajs.com/" target="_blank">InertiaJS</a></b> <small>VueJs Framework</small>
 3. <b><a href="https://tailwindcss.com/" target="_blank">TailwindCSS</a></b> <small>Style Kit</small>
 4. <b><a href="https://vuejs.org/" target="_blank">VueJs</a></b> <small>Javascript framework</small>
 5. <b><a href="https://filamentphp.com/" target="_blank">Filament</a></b> <small>It's a very creative admin panel for TALL stack</small>
-6. <b><a href="https://www.infyom.com/open-source" target="_blank">Infyom</a></b> <small>APIs Scaffolding</small>
-7. <b><a href="https://laravel.com/docs/8.x/sanctum" target="_blank">Laravel Sanctum</a></b> <small>APIs Token Auth</small>
-8.  <b><a href="https://spatie.be/docs/laravel-permission/v4/introduction" target="_blank">Laravel Permission</a></b> <small>User ACL</small>
-9.  <b><a href="https://nwidart.com/laravel-modules/v6/introduction" target="_blank">Laravel Module</a></b> <small>MVC Modular Arch</small>
-10.  <b><a href="https://laravel-excel.com/" target="_blank">Laravel Excel</a></b> <small>Import & Export Excel</small>
-11.  <b><a href="https://github.com/spatie/laravel-sitemap" target="_blank">Laravel Sitemap</a></b> <small>Sitemap Generator</small>
-12. <b><a href="https://github.com/spatie/laravel-translatable" target="_blank">Laravel Translatable</a></b> <small>Translation UI</small>
-13. <b><a href="https://github.com/spatie/laravel-medialibrary" target="_blank">Laravel Media Library</a></b> <small>Media & Upload</small>
-14. <b><a href="https://github.com/spatie/laravel-backup" target="_blank">Laravel Backup</a></b> <small>Backup</small>
-15. <b><a href="https://larecipe.binarytorch.com.my/" target="_blank">LaRecipe</a></b> <small>Documentations UI</small>
+6. <b><a href="https://laravel.com/docs/8.x/sanctum" target="_blank">Laravel Sanctum</a></b> <small>APIs Token Auth</small>
+7.  <b><a href="https://spatie.be/docs/laravel-permission/v4/introduction" target="_blank">Laravel Permission</a></b> <small>User ACL</small>
+8.  <b><a href="https://nwidart.com/laravel-modules/v6/introduction" target="_blank">Laravel Module</a></b> <small>MVC Modular Arch</small>
+9.  <b><a href="https://laravel-excel.com/" target="_blank">Laravel Excel</a></b> <small>Import & Export Excel</small>
+10.  <b><a href="https://github.com/spatie/laravel-sitemap" target="_blank">Laravel Sitemap</a></b> <small>Sitemap Generator</small>
+11. <b><a href="https://github.com/spatie/laravel-translatable" target="_blank">Laravel Translatable</a></b> <small>Translation UI</small>
+12. <b><a href="https://github.com/spatie/laravel-medialibrary" target="_blank">Laravel Media Library</a></b> <small>Media & Upload</small>
+13. <b><a href="https://github.com/spatie/laravel-backup" target="_blank">Laravel Backup</a></b> <small>Backup</small>
 
 ## Contributors
 
@@ -116,4 +81,3 @@ Vilt Admin use internally some open-source third-party libraries/packages, many 
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
-

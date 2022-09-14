@@ -12,8 +12,8 @@ export default ({ mode }) => {
         /*
         Use only if using laravel-valet to manage server
          */
-        let keyPath = resolve(homedir(), `.valet/Certificates/${host}.key`);
-        let certificatePath = resolve(homedir(), `.valet/Certificates/${host}.crt`);
+        let keyPath = resolve(homedir(), `.config/valet/Certificates/${host}.key`);
+        let certificatePath = resolve(homedir(), `.config/valet/Certificates/${host}.crt`);
 
         if (!fs.existsSync(keyPath)) {
             return {};
@@ -36,7 +36,7 @@ export default ({ mode }) => {
     return defineConfig({
         resolve:{
             alias:{
-                '$$' : resolve(__dirname, './Modules/Base/Services/Rows/Render'),
+                '$$' : resolve(__dirname, './Modules/'+process.env.THEME_MODULE+'/Resources/views/Rows'),
                 '@@' : resolve(__dirname, './Modules/'+process.env.THEME_MODULE+'/Resources/views'),
             },
         },

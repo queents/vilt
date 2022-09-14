@@ -20,6 +20,18 @@ This package is used to generate an admin panel for you with a CRUD generator us
 - [x] Widgets Builder
 - [x] Menu Builder
 
+## Plugins
+
+1. <b><a href="https://github.com/queents/settings-module" target="_blank">Settings Module</a></b> <small>GUI to save key and value on database and cache it</small>
+2. <b><a href="https://github.com/queents/translations-module" target="_blank">Translations Module</a></b> <small>Database Base Translations Keys with Google Translations API Integration</small>
+3. <b><a href="https://github.com/queents/auth-module" target="_blank">Auth Module</a></b> <small>convert any Model to Auth Model with full API</small>
+4. <b><a href="https://github.com/queents/artisan-module" target="_blank">Artisan Module</a></b> <small>run artisan commands using GUI</small>
+5. <b><a href="https://github.com/queents/browser-module" target="_blank">Browser Module</a></b> <small>browse the file inside your app</small>
+6. <b><a href="https://github.com/queents/menus-module" target="_blank">Menu Module</a></b> <small>Menu manager and generator for Database</small>
+7. <b><a href="https://github.com/queents/notifications-module" target="_blank">Notifications Module</a></b> <small>multi channels and vendors like FCM / Pusher</small>
+8. <b><a href="https://github.com/queents/locations-module" target="_blank">Locations Module</a></b> <small>Database seeds for Locations Module for VILT stack</small>
+9. <b><a href="https://github.com/3x1io/filamentUI-module" target="_blank">FilamentUI Theme</a></b> <small>a Filament PHP theme build for VILT Stack</small>
+
 ## Docs
 
 - [Environment Setup](https://github.com/queents/vilt/wiki/Environment-Setup)

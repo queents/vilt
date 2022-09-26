@@ -107,7 +107,13 @@ class InstallVilt extends Command
         $this->handelFile('/modules_statuses.json', base_path('/modules_statuses.json'));
         $this->callSilent('migrate');
         $this->callSilent('optimize:clear');
-        $this->info('Please run yarn i & yarn build');
+        if($theme === "1"){
+            $this->info('Add THEME_MODULE=UI to .env');
+        }
+        else if($theme === "2"){
+            $this->info('Add THEME_MODULE=FilamentUI to .env');
+        }
+        $this->info('After Add To .env Please run yarn i & yarn build');
     }
 
     public function handelFile(string $from, string $to, string $type = 'file'): void

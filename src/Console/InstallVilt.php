@@ -192,7 +192,7 @@ class InstallVilt extends Command
 
     public function generatePermission(string $path): void
     {
-        $this->runDirectCommandPHP(['roles:generate', $path]);
+        $this->runArtisanCommand(['roles:generate', $path]);
     }
 
     public function runArtisanCommand(array $command):void

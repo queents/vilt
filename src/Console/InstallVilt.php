@@ -57,8 +57,8 @@ class InstallVilt extends Command
         $this->handelFile('/app/Models/User.php', app_path('/Models/User.php'));
         $this->info('Copy modules_statuses.json');
         $this->handelFile('/modules_statuses.json', base_path('/modules_statuses.json'));
-        $this->callSilent('migrate');
-        $this->callSilent('roles:install');
+        $this->runArtisanCommand(['migrate']);
+        $this->runArtisanCommand(['roles:install']);
         $theme = $this->ask("Please select theme from this list \n [1] Admin UI \n [2] FilamentUI \n [3] Without UI \n");
         if($theme === "1"){
             $this->requireComposerPackages(['queents/ui-module']);

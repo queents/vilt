@@ -47,7 +47,14 @@ class InstallVilt extends Command
      */
     public function handle()
     {
-
+        $getMigrationFiles = File::files(database_path('migrations'));
+        foreach ($getMigrationFiles as $file){
+            if(strpos($file->getFilename(), 'sessions')){
+                File::delete($file->getRealPath());
+            }
+        }
+        $this->info('Copy User.php');
+        $this->handelFile('/app/Models/User.php', app_path('/Models/User.php'));
         $this->info('Copy modules_statuses.json');
         $this->handelFile('/modules_statuses.json', base_path('/modules_statuses.json'));
         $this->callSilent('migrate');
@@ -60,15 +67,15 @@ class InstallVilt extends Command
             $this->requireComposerPackages(['3x1io/filamentui-module']);
         }
         $plugins = $this->ask("Please select plugins from this list EX: 1,2,3,4 \n
-            [1] Settings - VILT framework Settings module GUI to save key and value on database and cache it \n
-            [2] Translations - Database Base Translations Keys with Google Translations API Integration \n
-            [3] Notifications - VILT Notifications Module with multi channels and vendors like FCM / Pusher \n
-            [4] Payment - Payment Services Integrations & Management Module for VILT Framework \n
-            [5] Log - Log Viewer for VILT Stack using Laravel Log Reader \n
-            [6] Backup - Backup module for VILT Stack build with spatie laravel-backup \n
-            [7] Locations - Database seeds for Locations Module for VILT stack \n
-            [8] Browser - VILT browser modules to browser the file inside your app \n
-            [9] Artisan - VILT artisan modules to run artisan commands using GUI \n
+[1] Settings - VILT framework Settings module GUI to save key and value on database and cache it \n
+[2] Translations - Database Base Translations Keys with Google Translations API Integration \n
+[3] Notifications - VILT Notifications Module with multi channels and vendors like FCM / Pusher \n
+[4] Payment - Payment Services Integrations & Management Module for VILT Framework \n
+[5] Log - Log Viewer for VILT Stack using Laravel Log Reader \n
+[6] Backup - Backup module for VILT Stack build with spatie laravel-backup \n
+[7] Locations - Database seeds for Locations Module for VILT stack \n
+[8] Browser - VILT browser modules to browser the file inside your app \n
+[9] Artisan - VILT artisan modules to run artisan commands using GUI \n
         ");
 
         $plugins = explode(",", $plugins);
@@ -77,51 +84,51 @@ class InstallVilt extends Command
                 case "1":
                     $this->requireComposerPackages(['queents/settings-module']);
                     $this->activeModule('Settings');
-                    $this->callSilent('migrate');
+                    $this->runArtisanCommand(['migrate']);
                     break;
                 case "2":
                     $this->requireComposerPackages(['queents/translations-module']);
                     $this->activeModule('Translations');
-                    $this->callSilent('migrate');
-                    $this->callSilent('translations:install');
+                    $this->runArtisanCommand(['migrate']);
+                    $this->runArtisanCommand(['translations:install']);
                     break;
                 case "3":
                     $this->requireComposerPackages(['queents/notifications-module']);
                     $this->activeModule('Notifications');
-                    $this->callSilent('migrate');
-                    $this->callSilent('notifications:install');
+                    $this->runArtisanCommand(['migrate']);
+                    $this->runArtisanCommand(['notifications:install']);
                     break;
                 case "4":
                     $this->requireComposerPackages(['queents/payment-module']);
                     $this->activeModule('Payment');
-                    $this->callSilent('migrate');
-                    $this->callSilent('payment:install');
+                    $this->runArtisanCommand(['migrate']);
+                    $this->runArtisanCommand(['payment:install']);
                     break;
                 case "5":
                     $this->requireComposerPackages(['3x1io/log-module']);
                     $this->activeModule('Log');
-                    $this->callSilent('roles:generate', ['logs']);
+                    $this->generatePermission('logs');
                     break;
                 case "6":
                     $this->requireComposerPackages(['3x1io/backup-module']);
                     $this->activeModule('Backup');
-                    $this->callSilent('roles:generate', ['backups']);
+                    $this->generatePermission('backups');
                     break;
                 case "7":
                     $this->requireComposerPackages(['queents/locations-module']);
                     $this->activeModule('Locations');
-                    $this->callSilent('migrate');
-                    $this->callSilent('locations:install');
+                    $this->runArtisanCommand(['migrate']);
+                    $this->runArtisanCommand(['location:install']);
                     break;
                 case "8":
                     $this->requireComposerPackages(['queents/browser-module']);
                     $this->activeModule('Browser');
-                    $this->callSilent('roles:generate', ['browser']);
+                    $this->generatePermission('browser');
                     break;
                 case "9":
                     $this->requireComposerPackages(['queents/artisan-module']);
                     $this->activeModule('Artisan');
-                    $this->callSilent('roles:generate', ['artisan']);
+                    $this->generatePermission('artisan');
                     break;
             }
         }
@@ -129,13 +136,6 @@ class InstallVilt extends Command
         /*
          * Step 1 Copy And Publish Assets
          */
-        $getMigrationFiles = File::files(database_path('migrations'));
-        foreach ($getMigrationFiles as $file){
-            if(strpos($file->getFilename(), 'sessions')){
-                File::delete($file->getRealPath());
-            }
-        }
-
         $this->info('Install JetStream');
         $this->callSilent('jetstream:install', [
             "stack"=>"inertia"
@@ -151,8 +151,6 @@ class InstallVilt extends Command
         $this->handelFile('/package.json', base_path('/package.json'));
         $this->info('Copy HandleInertiaRequests.php');
         $this->handelFile('/app/Http/Middleware/HandleInertiaRequests.php', app_path('/Http/Middleware/HandleInertiaRequests.php'));
-        $this->info('Copy User.php');
-        $this->handelFile('/app/Models/User.php', app_path('/Models/User.php'));
         $this->info('Copy RouteServiceProvider.php');
         $this->handelFile('/app/Providers/RouteServiceProvider.php', app_path('/Providers/RouteServiceProvider.php'));
         $this->info('Copy modules.php');
@@ -172,7 +170,6 @@ class InstallVilt extends Command
         if(!$this->checkFile(base_path('Modules'))){
             File::makeDirectory(base_path('Modules'));
         }
-        $this->callSilent('migrate');
         $this->callSilent('optimize:clear');
         if($theme === "1"){
             $this->info('Add THEME_MODULE=UI to .env');
@@ -182,6 +179,25 @@ class InstallVilt extends Command
             $this->info('Add THEME_MODULE=FilamentUI to .env');
             $this->info('After Add To .env Please run yarn & yarn add tippy.js & yarn build');
         }
+    }
+
+    public function runDirectCommandPHP(array $commands): void
+    {
+        (new Process(array_merge([$this->phpBinary()],$commands), base_path(), ['COMPOSER_MEMORY_LIMIT' => '-1']))
+            ->setTimeout(null)
+            ->run(function ($type, $output) {
+                $this->output->write($output);
+            });
+    }
+
+    public function generatePermission(string $path): void
+    {
+        $this->runDirectCommandPHP(['roles:generate', $path]);
+    }
+
+    public function runArtisanCommand(array $command):void
+    {
+        $this->runDirectCommandPHP(array_merge(['artisan'], $command));
     }
 
     public function activeModule(string $module): void

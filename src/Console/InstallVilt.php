@@ -53,7 +53,6 @@ class InstallVilt extends Command
                 File::delete($file->getRealPath());
             }
         }
-        $this->info('Copy User.php');
         $this->handelFile('/app/Models/User.php', app_path('/Models/User.php'));
         $this->info('Copy modules_statuses.json');
         $this->handelFile('/modules_statuses.json', base_path('/modules_statuses.json'));
@@ -170,7 +169,10 @@ class InstallVilt extends Command
         if(!$this->checkFile(base_path('Modules'))){
             File::makeDirectory(base_path('Modules'));
         }
+        $this->info('Copy User.php');
+        $this->handelFile('/app/Models/User.php', app_path('/Models/User.php'));
         $this->callSilent('optimize:clear');
+        $this->callSilent('migration');
         if($theme === "1"){
             $this->info('Add THEME_MODULE=UI to .env');
             $this->info('After Add To .env Please run yarn i & yarn build');

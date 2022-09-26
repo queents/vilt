@@ -1,5 +1,6 @@
 {
     "Base": true,
     "Roles": true,
-    "Generator": true
+    "Generator": true,
+    "API": true
 }

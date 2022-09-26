@@ -5,8 +5,11 @@ namespace Queents\Vilt\Console;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\File;
+use RuntimeException;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
+use Symfony\Component\Process\PhpExecutableFinder;
+use Symfony\Component\Process\Process;
 
 class InstallVilt extends Command
 {
@@ -17,7 +20,7 @@ class InstallVilt extends Command
      *
      * @var string
      */
-    protected $name = 'vilt:install';
+    protected $signature = 'vilt:install {--composer=global : Absolute path to the Composer binary which should be used to install packages}';
 
     /**
      * The console command description.
@@ -44,14 +47,30 @@ class InstallVilt extends Command
      */
     public function handle()
     {
+
+        $theme = $this->ask("Please select theme from this list \n [1] Admin UI \n [2] FilamentUI \n [3] Without UI \n");
+        if($theme === "1"){
+            $this->requireComposerPackages(['queents/ui-module']);
+        }
+        else if($theme === "2"){
+            $this->requireComposerPackages(['3x1io/filamentui-module']);
+        }
+
         /*
          * Step 1 Copy And Publish Assets
          */
-        $this->info('Install Jetstream');
+        $getMigrationFiles = File::files(database_path('migrations'));
+        foreach ($getMigrationFiles as $file){
+            if(strpos($file->getFilename(), 'sessions')){
+                File::delete($file->getRealPath());
+            }
+        }
+
+        $this->info('Install JetStream');
         $this->runArtisan('jetstream:install', [
             "stack"=>"inertia"
         ]);
-        $this->info('Migrate Jetstream Tables');
+        $this->info('Migrate JetStream Tables');
         $this->runArtisan('migrate');
         $this->info('Copy tailwind.config.js');
         $this->handelFile('/tailwind.config.js', base_path('/tailwind.config.js'));
@@ -86,9 +105,16 @@ class InstallVilt extends Command
         }
         $this->info('Copy modules_statuses.json');
         $this->handelFile('/modules_statuses.json', base_path('/modules_statuses.json'));
+        $this->info('Migrate Roles');
+        $this->runArtisan('migrate');
         $this->info('Clear cache');
         $this->runArtisan('optimize:clear');
-        $this->info('Please run npm i & npm run build');
+        $this->info('Generate Admin & Roles');
+        $this->runArtisan('roles:install');
+        $this->info('The Permission Has Been Generated');
+        $this->info('Admin Username: admin@admin.com');
+        $this->info('Admin Password: QTS@2022');
+        $this->info('Please run yarn i & yarn build');
     }
 
     public function handelFile(string $from, string $to, string $type = 'file'): void
@@ -134,5 +160,90 @@ class InstallVilt extends Command
         }
 
         return $delete;
+    }
+
+    /**
+     * Run the given commands.
+     *
+     * @param  array  $commands
+     * @return void
+     */
+    protected function runCommands(array $commands): void
+    {
+        $process = Process::fromShellCommandline(implode(' && ', $commands), null, null, null, null);
+
+        if ('\\' !== DIRECTORY_SEPARATOR && file_exists('/dev/tty') && is_readable('/dev/tty')) {
+            try {
+                $process->setTty(true);
+            } catch (RuntimeException $e) {
+                $this->output->writeln('  <bg=yellow;fg=black> WARN </> '.$e->getMessage().PHP_EOL);
+            }
+        }
+
+        $process->run(function ($type, $line) {
+            $this->output->write('    '.$line);
+        });
+    }
+
+    /**
+     * Get the path to the appropriate PHP binary.
+     *
+     * @return string
+     */
+    protected function phpBinary(): string
+    {
+        return (new PhpExecutableFinder())->find(false) ?: 'php';
+    }
+
+    /**
+     * Installs the given Composer Packages into the application.
+     *
+     * @param  mixed  $packages
+     * @return void
+     */
+    protected function requireComposerPackages(mixed $packages): void
+    {
+        $composer = $this->option('composer');
+
+        if ($composer !== 'global') {
+            $command = [$this->phpBinary(), $composer, 'require'];
+        }
+
+        $command = array_merge(
+            $command ?? ['composer', 'require'],
+            is_array($packages) ? $packages : func_get_args()
+        );
+
+        (new Process($command, base_path(), ['COMPOSER_MEMORY_LIMIT' => '-1']))
+            ->setTimeout(null)
+            ->run(function ($type, $output) {
+                $this->output->write($output);
+            });
+    }
+
+    /**
+     * Install the given Composer Packages as "dev" dependencies.
+     *
+     * @param  mixed  $packages
+     * @return void
+     */
+    protected function requireComposerDevPackages(mixed $packages): void
+    {
+        $composer = $this->option('composer');
+
+        if ($composer !== 'global') {
+            $command = [$this->phpBinary(), $composer, 'require', '--dev'];
+        }
+
+        $command = array_merge(
+            $command ?? ['composer', 'require', '--dev'],
+            is_array($packages) ? $packages : func_get_args()
+        );
+
+        (new Process($command, base_path(), ['COMPOSER_MEMORY_LIMIT' => '-1']))
+            ->setTimeout(null)
+            ->run(function ($type, $output) {
+                $this->output->write($output);
+            });
     }
 }

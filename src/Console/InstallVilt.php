@@ -105,15 +105,8 @@ class InstallVilt extends Command
         }
         $this->info('Copy modules_statuses.json');
         $this->handelFile('/modules_statuses.json', base_path('/modules_statuses.json'));
-        $this->info('Migrate Roles');
         $this->callSilent('migrate');
-        $this->info('Clear cache');
         $this->callSilent('optimize:clear');
-        $this->info('Generate Admin & Roles');
-        $this->callSilent('roles:install');
-        $this->info('The Permission Has Been Generated');
-        $this->info('Admin Username: admin@admin.com');
-        $this->info('Admin Password: QTS@2022');
         $this->info('Please run yarn i & yarn build');
     }
 

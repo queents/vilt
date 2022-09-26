@@ -106,11 +106,11 @@ class InstallVilt extends Command
         $this->info('Copy modules_statuses.json');
         $this->handelFile('/modules_statuses.json', base_path('/modules_statuses.json'));
         $this->info('Migrate Roles');
-        $this->runArtisan('migrate');
+        $this->callSilent('migrate');
         $this->info('Clear cache');
-        $this->runArtisan('optimize:clear');
+        $this->callSilent('optimize:clear');
         $this->info('Generate Admin & Roles');
-        $this->runArtisan('roles:install');
+        $this->callSilent('roles:install');
         $this->info('The Permission Has Been Generated');
         $this->info('Admin Username: admin@admin.com');
         $this->info('Admin Password: QTS@2022');
@@ -129,11 +129,6 @@ class InstallVilt extends Command
         }
     }
 
-    public function runArtisan(string $command, array $args=[]): string
-    {
-        Artisan::call($command, $args);
-        return  Artisan::output();
-    }
     public function checkFile(string $path): bool
     {
         return File::exists($path);

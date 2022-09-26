@@ -67,11 +67,11 @@ class InstallVilt extends Command
         }
 
         $this->info('Install JetStream');
-        $this->runArtisan('jetstream:install', [
+        $this->callSilent('jetstream:install', [
             "stack"=>"inertia"
         ]);
         $this->info('Migrate JetStream Tables');
-        $this->runArtisan('migrate');
+        $this->callSilent('migrate');
         $this->info('Copy tailwind.config.js');
         $this->handelFile('/tailwind.config.js', base_path('/tailwind.config.js'));
         $this->info('Copy vite.config.js');

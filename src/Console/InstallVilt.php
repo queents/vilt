@@ -172,7 +172,7 @@ class InstallVilt extends Command
         $this->info('Copy User.php');
         $this->handelFile('/app/Models/User.php', app_path('/Models/User.php'));
         $this->callSilent('optimize:clear');
-        $this->callSilent('migration');
+        $this->callSilent('migrate');
         if($theme === "1"){
             $this->info('Add THEME_MODULE=UI to .env');
             $this->info('After Add To .env Please run yarn i & yarn build');

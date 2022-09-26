@@ -48,12 +48,82 @@ class InstallVilt extends Command
     public function handle()
     {
 
+        $this->info('Copy modules_statuses.json');
+        $this->handelFile('/modules_statuses.json', base_path('/modules_statuses.json'));
+        $this->callSilent('migrate');
+        $this->callSilent('roles:install');
         $theme = $this->ask("Please select theme from this list \n [1] Admin UI \n [2] FilamentUI \n [3] Without UI \n");
         if($theme === "1"){
             $this->requireComposerPackages(['queents/ui-module']);
         }
         else if($theme === "2"){
             $this->requireComposerPackages(['3x1io/filamentui-module']);
+        }
+        $plugins = $this->ask("Please select plugins from this list EX: 1,2,3,4 \n
+            [1] Settings - VILT framework Settings module GUI to save key and value on database and cache it \n
+            [2] Translations - Database Base Translations Keys with Google Translations API Integration \n
+            [3] Notifications - VILT Notifications Module with multi channels and vendors like FCM / Pusher \n
+            [4] Payment - Payment Services Integrations & Management Module for VILT Framework \n
+            [5] Log - Log Viewer for VILT Stack using Laravel Log Reader \n
+            [6] Backup - Backup module for VILT Stack build with spatie laravel-backup \n
+            [7] Locations - Database seeds for Locations Module for VILT stack \n
+            [8] Browser - VILT browser modules to browser the file inside your app \n
+            [9] Artisan - VILT artisan modules to run artisan commands using GUI \n
+        ");
+
+        $plugins = explode(",", $plugins);
+        foreach($plugins as $plugin){
+            switch ($plugin){
+                case "1":
+                    $this->requireComposerPackages(['queents/settings-module']);
+                    $this->activeModule('Settings');
+                    $this->callSilent('migrate');
+                    break;
+                case "2":
+                    $this->requireComposerPackages(['queents/translations-module']);
+                    $this->activeModule('Translations');
+                    $this->callSilent('migrate');
+                    $this->callSilent('translations:install');
+                    break;
+                case "3":
+                    $this->requireComposerPackages(['queents/notifications-module']);
+                    $this->activeModule('Notifications');
+                    $this->callSilent('migrate');
+                    $this->callSilent('notifications:install');
+                    break;
+                case "4":
+                    $this->requireComposerPackages(['queents/payment-module']);
+                    $this->activeModule('Payment');
+                    $this->callSilent('migrate');
+                    $this->callSilent('payment:install');
+                    break;
+                case "5":
+                    $this->requireComposerPackages(['3x1io/log-module']);
+                    $this->activeModule('Log');
+                    $this->callSilent('roles:generate', ['logs']);
+                    break;
+                case "6":
+                    $this->requireComposerPackages(['3x1io/backup-module']);
+                    $this->activeModule('Backup');
+                    $this->callSilent('roles:generate', ['backups']);
+                    break;
+                case "7":
+                    $this->requireComposerPackages(['queents/locations-module']);
+                    $this->activeModule('Locations');
+                    $this->callSilent('migrate');
+                    $this->callSilent('locations:install');
+                    break;
+                case "8":
+                    $this->requireComposerPackages(['queents/browser-module']);
+                    $this->activeModule('Browser');
+                    $this->callSilent('roles:generate', ['browser']);
+                    break;
+                case "9":
+                    $this->requireComposerPackages(['queents/artisan-module']);
+                    $this->activeModule('Artisan');
+                    $this->callSilent('roles:generate', ['artisan']);
+                    break;
+            }
         }
 
         /*
@@ -71,7 +141,6 @@ class InstallVilt extends Command
             "stack"=>"inertia"
         ]);
         $this->info('Migrate JetStream Tables');
-        $this->callSilent('migrate');
         $this->info('Copy tailwind.config.js');
         $this->handelFile('/tailwind.config.js', base_path('/tailwind.config.js'));
         $this->info('Copy vite.config.js');
@@ -103,17 +172,26 @@ class InstallVilt extends Command
         if(!$this->checkFile(base_path('Modules'))){
             File::makeDirectory(base_path('Modules'));
         }
-        $this->info('Copy modules_statuses.json');
-        $this->handelFile('/modules_statuses.json', base_path('/modules_statuses.json'));
         $this->callSilent('migrate');
         $this->callSilent('optimize:clear');
         if($theme === "1"){
             $this->info('Add THEME_MODULE=UI to .env');
+            $this->info('After Add To .env Please run yarn i & yarn build');
         }
         else if($theme === "2"){
             $this->info('Add THEME_MODULE=FilamentUI to .env');
+            $this->info('After Add To .env Please run yarn & yarn add tippy.js & yarn build');
         }
-        $this->info('After Add To .env Please run yarn i & yarn build');
+    }
+
+    public function activeModule(string $module): void
+    {
+        $check = File::exists(base_path('/modules_statuses.json'));
+        if($check){
+            $fileJson = json_decode(File::get(base_path('/modules_statuses.json')));
+            $fileJson[$module] = true;
+            File::put(base_path('/modules_statuses.json'), json_encode($fileJson));
+        }
     }
 
     public function handelFile(string $from, string $to, string $type = 'file'): void

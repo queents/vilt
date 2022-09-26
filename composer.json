@@ -29,6 +29,7 @@
         "spatie/laravel-translation-loader": "^2.7",
         "queents/api-module": "^1.0",
         "queents/base-module": "^1.0",
+        "queents/menu-module": "^1.0",
         "queents/roles-module": "^1.0",
         "queents/generator-module": "^1.0"
     }

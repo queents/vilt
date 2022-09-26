@@ -2,5 +2,6 @@
     "Base": true,
     "Roles": true,
     "Generator": true,
-    "API": true
+    "API": true,
+    "Menu": true
 }

@@ -205,7 +205,7 @@ class InstallVilt extends Command
         $check = File::exists(base_path('/modules_statuses.json'));
         if($check){
             $fileJson = json_decode(File::get(base_path('/modules_statuses.json')));
-            $fileJson[$module] = true;
+            $fileJson->{$module} = true;
             File::put(base_path('/modules_statuses.json'), json_encode($fileJson));
         }
     }

@@ -31,6 +31,11 @@ This package is used to generate an admin panel for you with a CRUD generator us
 7. <b><a href="https://github.com/queents/notifications-module" target="_blank">Notifications Module</a></b> <small>multi channels and vendors like FCM / Pusher</small>
 8. <b><a href="https://github.com/queents/locations-module" target="_blank">Locations Module</a></b> <small>Database seeds for Locations Module for VILT stack</small>
 9. <b><a href="https://github.com/3x1io/filamentUI-module" target="_blank">FilamentUI Theme</a></b> <small>a Filament PHP theme build for VILT Stack</small>
+10. <b><a href="https://github.com/3x1io/backup-module" target="_blank">Backup</a></b> <small>a Backup GUI to backup your project files and DB</small>
+11. <b><a href="https://github.com/3x1io/log-module" target="_blank">Log</a></b> <small>a Logs GUI to check your errors logs and track it</small>
+12. <b><a href="https://github.com/queents/payment-module" target="_blank">Payment</a></b> <small>a Tons of payment gateway ready to use</small>
+13. <b><a href="https://github.com/queents/api-module" target="_blank">API</a></b> <small>an API generator</small>
+14. <b><a href="https://github.com/queents/auth-module" target="_blank">Auth</a></b> <small>an auth generator for any selected table</small>
 
 ## Docs
 

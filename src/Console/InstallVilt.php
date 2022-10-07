@@ -175,11 +175,11 @@ class InstallVilt extends Command
         $this->callSilent('migrate');
         if($theme === "1"){
             $this->info('Add THEME_MODULE=UI to .env');
-            $this->info('After Add To .env Please run yarn i & yarn build');
+            $this->info('After Add To .env Please run yarn i & yarn build and run migration');
         }
         else if($theme === "2"){
-            $this->info('Add THEME_MODULE=FilamentUI to .env');
-            $this->info('After Add To .env Please run yarn & yarn add tippy.js & yarn build');
+            $this->info('Add THEME_MODULE=Filamentui to .env and add "Filamentui": true to modules_statuses.json and run migration');
+            $this->info('After Add To .env Please run yarn & yarn build');
         }
     }
 

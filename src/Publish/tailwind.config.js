@@ -92,9 +92,5 @@ module.exports = {
         }),
         require("@tailwindcss/line-clamp"),
         require("tailwindcss-rtl"),
-        require("daisyui"),
     ],
-    daisyui: {
-        themes: false,
-    },
 };

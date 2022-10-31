@@ -41,25 +41,7 @@ This package is used to generate an admin panel for you with a CRUD generator us
 
 ### Docs
 
-* [Environment Setup](https://github.com/queents/vilt/wiki/Environment-Setup)
-* [Install](https://github.com/queents/vilt/wiki/Install)
-* [Generate Resource](https://github.com/queents/vilt/wiki/Generate-Resource)
-* [Generate Action](https://github.com/queents/vilt/wiki/Generate-Actions)
-* [Generate Modal](https://github.com/queents/vilt/wiki/Generate-Modal)
-* [Generate Widget](https://github.com/queents/vilt/wiki/Generate-Widget)
-* [Generate Route](https://github.com/queents/vilt/wiki/Generate-Route)
-* [Menu Manager](https://github.com/queents/vilt/wiki/Menu-Manager)
-* [Translation Manager](https://github.com/queents/vilt/wiki/Translation-Manager)
-* [Data Manager](https://github.com/queents/vilt/wiki/Data-Manager)
-* [Form Builder](https://github.com/queents/vilt/wiki/Form-Builder)
-* [Table Builder](https://github.com/queents/vilt/wiki/Table-Builder)
-* [Page Builder](https://github.com/queents/vilt/wiki/Page-Builder)
-* [Fire Alert](https://github.com/queents/vilt/wiki/Fire-Alert)
-* [Custom View](https://github.com/queents/vilt/wiki/Custom-View)
-* [Plugins](https://github.com/queents/vilt/wiki/Plugins)
-* [Build Plugins](https://github.com/queents/vilt/wiki/Build-Plugins)
-* [Get Started](https://github.com/queents/vilt/wiki/Get-Started)
-* [Awesome Resources for Tailwind](https://github.com/queents/vilt/wiki/Awesome-Resources-for-Tailwind)
+you can review our docs [here](https://queents.gitbook.io/vilt/)
 
 ### Support
 

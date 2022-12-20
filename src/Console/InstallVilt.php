@@ -154,8 +154,6 @@ class InstallVilt extends Command
         $this->handelFile('/app/Providers/RouteServiceProvider.php', app_path('/Providers/RouteServiceProvider.php'));
         $this->info('Copy modules.php');
         $this->handelFile('/config/modules.php', config_path('/modules.php'));
-        $this->info('Copy app.php');
-        $this->handelFile('/config/app.php', config_path('/app.php'));
         $this->info('Copy placeholder.webp');
         $this->handelFile('/public/placeholder.webp', public_path('/placeholder.webp'));
         $this->info('Copy css');
